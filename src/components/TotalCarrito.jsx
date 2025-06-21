@@ -1,4 +1,4 @@
-const CartTotal = ({ total, onCheckout, onClearCart }) => {
+const TotalCarrito = ({ total, onCheckout, onClearCart }) => {
   return (
     <>
       <div className="border-top pt-3 mb-3">
@@ -31,4 +31,4 @@ const CartTotal = ({ total, onCheckout, onClearCart }) => {
   );
 };
 
-export default CartTotal;
+export default TotalCarrito;

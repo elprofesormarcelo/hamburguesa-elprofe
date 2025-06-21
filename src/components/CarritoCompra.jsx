@@ -1,9 +1,9 @@
 import React from 'react';
-import CartItem from './CartItem';  
-import CartTotal from './CartTotal';
-import EmptyCart from './EmptyCart';
+import ArticuloCarrito from './ArticuloCarrito';  
+import TotalCarrito from './TotalCarrito';
+import CarritoVacio from './CarritoVacio';
 
-const ShoppingCart = ({ 
+const CarritoCompra = ({ 
   cartItems, 
   onIncrease, 
   onDecrease, 
@@ -17,20 +17,20 @@ const ShoppingCart = ({
       <div className="card shadow-sm h-100">
         <div className="card-header bg-white d-flex justify-content-between align-items-center">
           <h2 className="card-title h4 mb-0 text-secondary">
-            <i className="bi bi-cart me-2"></i>Tu Carrito
+            <i className="bi bi-cart me-2"></i> Carrito de Compras
           </h2>
           <span className="badge bg-primary rounded-pill fs-6">
-            {cartItems.length} items
+            {cartItems.length} Productos
           </span>
         </div>
         <div className="card-body">
           {cartItems.length === 0 ? (
-            <EmptyCart />
+            <CarritoVacio />
           ) : (
             <>
               <div className="list-group list-group-flush mb-3">
                 {cartItems.map(item => (
-                  <CartItem
+                  <ArticuloCarrito
                     key={item.id}
                     item={item}
                     onIncrease={onIncrease}
@@ -39,7 +39,7 @@ const ShoppingCart = ({
                   />
                 ))}
               </div>
-              <CartTotal 
+              <TotalCarrito 
                 total={total} 
                 onCheckout={onCheckout} 
                 onClearCart={onClearCart}
@@ -52,4 +52,4 @@ const ShoppingCart = ({
   );
 };
 
-export default ShoppingCart;
+export default CarritoCompra;

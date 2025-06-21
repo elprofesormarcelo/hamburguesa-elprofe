@@ -1,7 +1,7 @@
 import React from 'react';
-import ProductCard from './ProductCard';
+import ProductoCarrito from './ProductoCarrito';
 
-const ProductList = ({ products, onAddToCart }) => {
+const ListaProducto = ({ products, onAddToCart }) => {
   return (
     <div className="col-lg-8">
       <div className="card shadow-sm h-100">
@@ -13,7 +13,7 @@ const ProductList = ({ products, onAddToCart }) => {
         <div className="card-body">
           <div className="row g-3">
             {products.map(product => (
-              <ProductCard 
+              <ProductoCarrito 
                 key={product.id} 
                 product={product} 
                 onAddToCart={onAddToCart}
@@ -26,4 +26,4 @@ const ProductList = ({ products, onAddToCart }) => {
   );
 };
 
-export default ProductList;
+export default ListaProducto;

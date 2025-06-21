@@ -1,4 +1,4 @@
-const EmptyCart = () => {
+const CarritoVacio = () => {
   return (
     <div className="text-center py-5">
       <i className="bi bi-cart-x display-1 text-muted mb-3"></i>
@@ -7,4 +7,4 @@ const EmptyCart = () => {
   );
 };
 
-export default EmptyCart;
+export default CarritoVacio;

@@ -1,4 +1,4 @@
-const ProductCard = ({ product, onAddToCart }) => {
+const ProductoCarrito = ({ product, onAddToCart }) => {
   return (
     <div className="col-sm-6 col-lg-4">
       <div className="card h-100 border-light shadow-sm">
@@ -19,4 +19,4 @@ const ProductCard = ({ product, onAddToCart }) => {
     </div>
   );
 };
-export default ProductCard;
+export default ProductoCarrito;

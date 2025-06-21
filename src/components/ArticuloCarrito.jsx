@@ -1,4 +1,4 @@
-const CartItem = ({ item, onIncrease, onDecrease, onRemove }) => {
+const ArticuloCarrito = ({ item, onIncrease, onDecrease, onRemove }) => {
   return (
     <div className="list-group-item px-0 py-3">
       <div className="d-flex justify-content-between align-items-start">
@@ -41,4 +41,4 @@ const CartItem = ({ item, onIncrease, onDecrease, onRemove }) => {
   );
 };
 
-export default CartItem;
+export default ArticuloCarrito;
