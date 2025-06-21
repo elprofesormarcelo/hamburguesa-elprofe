@@ -1,6 +1,6 @@
 // components/ArticuloCarrito.js
 import React from 'react';
-import { useCarrito } from './context/CarritoContext';
+import { useCarrito } from '../context/CarritoContext';
 
 const ArticuloCarrito = ({ item }) => {
   const { aumentarCantidad, disminuirCantidad, eliminarDelCarrito } = useCarrito();

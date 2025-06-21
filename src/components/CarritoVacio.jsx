@@ -1,4 +1,6 @@
 // components/CarritoVacio.js
+import React from 'react'
+
 const CarritoVacio = () => {
   return (
     <div className="text-center py-5">

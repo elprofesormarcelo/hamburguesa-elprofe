@@ -1,6 +1,6 @@
 // components/ListaProducto.js
-import React from 'react';
 import ProductoCarrito from './ProductoCarrito';
+
 
 const ListaProducto = ({ products }) => {
   return (

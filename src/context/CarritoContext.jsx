@@ -1,6 +1,7 @@
 // CarritoContext.js
 import React, { createContext, useContext, useReducer } from 'react';
 
+
 // Definir tipos de acciones
 const CART_ACTIONS = {
   ADD_TO_CART: 'ADD_TO_CART',
@@ -160,3 +161,4 @@ export const useCarrito = () => {
   }
   return context;
 };
+export default CarritoContext;

@@ -1,6 +1,5 @@
 // components/TotalCarrito.js
-import React from 'react';
-import { useCarrito } from './context/CarritoContext';
+import { useCarrito } from '../context/CarritoContext';
 
 const TotalCarrito = () => {
   const { total, manejarPago, vaciarCarrito } = useCarrito();
