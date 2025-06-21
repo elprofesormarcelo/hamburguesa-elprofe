@@ -1,4 +1,4 @@
-// components/CarritoCompra.js
+// components/CarritoCompra.jsx
 import { useCarrito } from '../context/CarritoContext';
 import ArticuloCarrito from './ArticuloCarrito';  
 import TotalCarrito from './TotalCarrito';

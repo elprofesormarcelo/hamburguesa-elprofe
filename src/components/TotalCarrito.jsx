@@ -1,4 +1,4 @@
-// components/TotalCarrito.js
+// components/TotalCarrito.jsx
 import { useCarrito } from '../context/CarritoContext';
 
 const TotalCarrito = () => {

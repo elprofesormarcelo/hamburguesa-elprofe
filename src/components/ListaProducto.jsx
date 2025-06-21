@@ -1,4 +1,4 @@
-// components/ListaProducto.js
+// components/ListaProducto.jsx
 import ProductoCarrito from './ProductoCarrito';
 
 

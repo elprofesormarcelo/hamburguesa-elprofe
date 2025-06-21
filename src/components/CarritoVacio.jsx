@@ -1,4 +1,4 @@
-// components/CarritoVacio.js
+// components/CarritoVacio.jsx
 import React from 'react'
 
 const CarritoVacio = () => {

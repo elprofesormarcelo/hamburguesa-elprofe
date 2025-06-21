@@ -1,4 +1,4 @@
-// components/ArticuloCarrito.js
+// components/ArticuloCarrito.jsx
 import React from 'react';
 import { useCarrito } from '../context/CarritoContext';
 

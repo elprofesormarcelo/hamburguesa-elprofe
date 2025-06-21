@@ -1,5 +1,7 @@
-// App.js
+// App.jsx (Actualizado)
 import { CarritoProvider } from './context/CarritoContext';
+import { AuthProvider } from './context/AuthContext';
+import ProtectedRoute from './components/ProtectedRoute';
 import Cabecera from './components/Cabecera';
 import ListaProducto from './components/ListaProducto';
 import CarritoCompra from './components/CarritoCompra';
@@ -34,18 +36,22 @@ function App() {
   ];
 
   return (
-    <CarritoProvider>
-      <div className="min-vh-100 bg-light">
-        <Cabecera />
-        
-        <div className="container">
-          <div className="row g-4">
-            <ListaProducto products={productos} />
-            <CarritoCompra />
+    <AuthProvider>
+      <CarritoProvider>
+        <ProtectedRoute>
+          <div className="min-vh-100 bg-light">
+            <Cabecera />
+            
+            <div className="container">
+              <div className="row g-4">
+                <ListaProducto products={productos} />
+                <CarritoCompra />
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    </CarritoProvider>
+        </ProtectedRoute>
+      </CarritoProvider>
+    </AuthProvider>
   );
 }
 
