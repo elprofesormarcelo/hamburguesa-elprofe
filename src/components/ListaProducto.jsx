@@ -1,7 +1,8 @@
+// components/ListaProducto.js
 import React from 'react';
 import ProductoCarrito from './ProductoCarrito';
 
-const ListaProducto = ({ products, onAddToCart }) => {
+const ListaProducto = ({ products }) => {
   return (
     <div className="col-lg-8">
       <div className="card shadow-sm h-100">
@@ -16,7 +17,6 @@ const ListaProducto = ({ products, onAddToCart }) => {
               <ProductoCarrito 
                 key={product.id} 
                 product={product} 
-                onAddToCart={onAddToCart}
               />
             ))}
           </div>

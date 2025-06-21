@@ -1,4 +1,10 @@
-const TotalCarrito = ({ total, onCheckout, onClearCart }) => {
+// components/TotalCarrito.js
+import React from 'react';
+import { useCarrito } from '../context/CarritoContext';
+
+const TotalCarrito = () => {
+  const { total, manejarPago, vaciarCarrito } = useCarrito();
+
   return (
     <>
       <div className="border-top pt-3 mb-3">
@@ -9,19 +15,17 @@ const TotalCarrito = ({ total, onCheckout, onClearCart }) => {
           </span>
         </div>
       </div>
-      {/* 🆕 NUEVO: Contenedor con grid para botones verticales */}
       <div className="d-grid gap-2">
         <button
           className="btn btn-success btn-lg fw-bold"
-          onClick={onCheckout}
+          onClick={manejarPago}
         >
           <i className="bi bi-credit-card me-2"></i>
           Proceder al Pago
         </button>
-        {/* 🆕 NUEVO: Botón para vaciar carrito */}
         <button
           className="btn btn-outline-danger fw-bold"
-          onClick={onClearCart}
+          onClick={vaciarCarrito}
         >
           <i className="bi bi-trash3 me-2"></i>
           Vaciar Carrito
