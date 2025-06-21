@@ -1,6 +1,6 @@
 // components/Cabecera.js
 import React from 'react';
-import { useCarrito } from '../context/CarritoContext';
+import { useCarrito } from './context/CarritoContext';
 
 const Cabecera = () => {
   const { cartCount } = useCarrito();

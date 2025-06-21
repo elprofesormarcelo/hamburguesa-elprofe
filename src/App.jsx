@@ -1,6 +1,6 @@
 // App.js
 import React from 'react';
-import { CarritoProvider } from './context/CarritoContext';
+import { CarritoProvider } from '../context/CarritoContext';
 import Cabecera from './components/Cabecera';
 import ListaProducto from './components/ListaProducto';
 import CarritoCompra from './components/CarritoCompra';

@@ -1,6 +1,6 @@
 // components/CarritoCompra.js
 import React from 'react';
-import { useCarrito } from '../context/CarritoContext';
+import { useCarrito } from './context/CarritoContext';
 import ArticuloCarrito from './ArticuloCarrito';  
 import TotalCarrito from './TotalCarrito';
 import CarritoVacio from './CarritoVacio';
