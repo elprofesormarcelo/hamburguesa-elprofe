@@ -3,8 +3,9 @@ const ProductoCarrito = ({ product, onAddToCart }) => {
     <div className="col-sm-6 col-lg-4">
       <div className="card h-100 border-light shadow-sm">
         <div className="card-body d-flex flex-column text-center">
+          <img src={product.img} alt="" />
           <h5 className="card-title text-dark">{product.name}</h5>
-          <p className="card-text fs-4 fw-bold text-success mb-3">
+           <p className="card-text fs-4 fw-bold text-success mb-3">
             ${product.price.toFixed(2)}
           </p>
           <button
