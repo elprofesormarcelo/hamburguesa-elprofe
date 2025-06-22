@@ -1,7 +1,12 @@
 // components/FormularioProducto.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
-const FormularioProducto = ({ onAgregarProducto, onCancelar }) => {
+const FormularioProducto = ({ 
+  onAgregarProducto, 
+  onCancelar, 
+  productoEditando = null,
+  modoEdicion = false
+}) => {
   const [formData, setFormData] = useState({
     name: '',
     price: '',
@@ -11,6 +16,27 @@ const FormularioProducto = ({ onAgregarProducto, onCancelar }) => {
 
   const [errors, setErrors] = useState({});
   const [loading, setLoading] = useState(false);
+
+  // Efecto para cargar datos del producto en modo edición
+  useEffect(() => {
+    if (modoEdicion && productoEditando) {
+      setFormData({
+        name: productoEditando.name || '',
+        price: productoEditando.price?.toString() || '',
+        description: productoEditando.description || '',
+        img: productoEditando.img || ''
+      });
+    } else {
+      // Resetear formulario para modo agregar
+      setFormData({
+        name: '',
+        price: '',
+        description: '',
+        img: ''
+      });
+    }
+    setErrors({});
+  }, [modoEdicion, productoEditando]);
 
   // Manejar cambios en los inputs
   const handleChange = (e) => {
@@ -87,27 +113,39 @@ const FormularioProducto = ({ onAgregarProducto, onCancelar }) => {
       // Simular procesamiento
       await new Promise(resolve => setTimeout(resolve, 1000));
 
-      const nuevoProducto = {
-        id: Date.now(), // En producción sería generado por el backend
+      const productoData = {
         name: formData.name.trim(),
         price: parseFloat(formData.price),
         description: formData.description.trim(),
         img: formData.img || 'https://via.placeholder.com/300x200?text=Sin+Imagen'
       };
 
-      onAgregarProducto(nuevoProducto);
+      if (modoEdicion) {
+        // Incluir ID para edición
+        productoData.id = productoEditando.id;
+      } else {
+        // Generar ID para nuevo producto
+        productoData.id = Date.now();
+      }
+
+      onAgregarProducto(productoData);
       
-      // Resetear formulario
-      setFormData({
-        name: '',
-        price: '',
-        description: '',
-        img: ''
-      });
+      // Resetear formulario solo si no estamos en modo edición
+      if (!modoEdicion) {
+        setFormData({
+          name: '',
+          price: '',
+          description: '',
+          img: ''
+        });
+      }
       setErrors({});
 
     } catch (error) {
-      console.error('Error al agregar producto:', error);
+      console.error('Error al procesar producto:', error);
+      setErrors({
+        general: 'Ocurrió un error al procesar el producto. Inténtalo nuevamente.'
+      });
     } finally {
       setLoading(false);
     }
@@ -117,11 +155,19 @@ const FormularioProducto = ({ onAgregarProducto, onCancelar }) => {
     <div className="card shadow-sm">
       <div className="card-header bg-white">
         <h3 className="card-title h4 mb-0 text-secondary">
-          <i className="bi bi-plus-circle me-2"></i>
-          Agregar Nuevo Producto
+          <i className={`bi ${modoEdicion ? 'bi-pencil-square' : 'bi-plus-circle'} me-2`}></i>
+          {modoEdicion ? 'Editar Producto' : 'Agregar Nuevo Producto'}
         </h3>
       </div>
       <div className="card-body">
+        {/* Error general */}
+        {errors.general && (
+          <div className="alert alert-danger" role="alert">
+            <i className="bi bi-exclamation-triangle me-2"></i>
+            {errors.general}
+          </div>
+        )}
+
         <form onSubmit={handleSubmit} noValidate>
           {/* Campo Nombre */}
           <div className="mb-3">
@@ -265,18 +311,18 @@ const FormularioProducto = ({ onAgregarProducto, onCancelar }) => {
             </button>
             <button
               type="submit"
-              className="btn btn-success"
+              className={`btn ${modoEdicion ? 'btn-warning' : 'btn-success'}`}
               disabled={loading}
             >
               {loading ? (
                 <>
                   <span className="spinner-border spinner-border-sm me-2" role="status"></span>
-                  Agregando...
+                  {modoEdicion ? 'Actualizando...' : 'Agregando...'}
                 </>
               ) : (
                 <>
-                  <i className="bi bi-check-circle me-2"></i>
-                  Agregar Producto
+                  <i className={`bi ${modoEdicion ? 'bi-pencil-square' : 'bi-check-circle'} me-2`}></i>
+                  {modoEdicion ? 'Actualizar Producto' : 'Agregar Producto'}
                 </>
               )}
             </button>
